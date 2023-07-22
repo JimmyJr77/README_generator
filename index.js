@@ -278,7 +278,7 @@ function generateReadmeContent(answers) {
   }
   content += '## Table of Contents\n' + tableOfContents.join('\n') + '\n\n';
 
-  if (answers.installationConfirm && answers.installationStep1) {
+  if (answers.installationConfirm) {
     installationContent = 
       '#### Step 1:\n' + answers.installationStep1;
     if (answers.installationStep2) {
@@ -286,10 +286,30 @@ function generateReadmeContent(answers) {
     }
     if (answers.installationRemainingSteps) {
       installationContent +=
-        '\n\n#### Remaining Steps:\n' + answers.installationRemainingSteps;
+        '\n\n#### Step 3:\n' + answers.installationRemainingSteps;
     }
     content += '## Installation\n' + installationContent + '\n\n';
+    //     const steps = answers.installationSteps.split('\n');
+    const steps = answers.installationRemainingSteps.split
+    let s=3;
+    while (s < steps.length && steps[n] !== '') {
+      installationContent += `Step ${s + 1}: ${steps[s+1]}\n\n`;
+      i++;
+    }
   }
+
+  // if (answers.installationConfirm && answers.installationStep1) {
+  //   installationContent = 
+  //     '#### Step 1:\n' + answers.installationStep1;
+  //   if (answers.installationStep2) {
+  //     installationContent += '\n\n#### Step 2:\n' + answers.installationStep2;
+  //   }
+  //   if (answers.installationRemainingSteps) {
+  //     installationContent +=
+  //       '\n\n#### Remaining Steps:\n' + answers.installationRemainingSteps;
+  //   }
+  //   content += '## Installation\n' + installationContent + '\n\n';
+  // }
 
   if (answers.usageConfirm) {
     content += '## Usage\n';
