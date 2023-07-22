@@ -1,62 +1,51 @@
 # fish
 
+## Description
+#### Motivation:
+ Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
+
+#### Why Build:
+
+
+#### Problem Solved:
+Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
+
+#### What Was Learned:
+Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
+
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
-- [Credits](#credits)
 - [License](#license)
-- [Badges](#badges)
 - [Features](#features)
 - [How to Contribute](#how-to-contribute)
 - [Tests](#tests)
 
 ## Installation
 #### Step 1:
-y
+Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
 
 #### Step 2:
-y
+Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
 
 #### Remaining Steps:
-y
+Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
 
 ## Usage
 #### Step 1:
-y
+Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
 
-y
 
-#### Step 2:
-y
-
-y
-
-#### Remaining Steps:
-y
-
-y
-
-## Credits
-y
-
-#### Third-Party Assets:
-y
-
-#### Tutorials Followed:
-y
 
 ## License
-y
-
-## Badges
-y
+Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
 
 ## Features
-y
+Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
 
 ## How to Contribute
-y
+Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
 
 ## Tests
-y
+Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
 

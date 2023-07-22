@@ -51,7 +51,7 @@ const installationQuestions = [
     },
     {
       type: 'input',
-      message: 'What is required to install your project? Provide full instruction or the first step instructing how to get the development environment running.',
+      message: 'What is required to install your project? Provide full instruction or simply the first step.',
       name: 'installationStep1',
       when: (answers) => answers.installationConfirm,
     },
@@ -78,39 +78,39 @@ const usageQuestions = [
   },
   {
     type: 'input',
-    message: 'Provide full instruction and examples of use here. Associated screenshots can be added next.',
+    message: 'Provide full instructions for use or itemize each by entering 1st consideration here. Associated screenshots can be added next.',
     name: 'usageStep1',
     when: (answers) => answers.usageConfirm,
   },
   {
     type: 'input',
-    message: 'Provide alt text and relative path to the image you would like to show. use the following format: ![alt text](assets/images/screenshot.png)',
+    message: 'Provide alt text and relative path to the image you would like to show using the following format: ![alt text](assets/images/screenshot.png)',
     name: 'usageStep1Image',
     when: (answers) => answers.usageConfirm,
   },
   {
     type: 'input',
-    message: 'Provide full instruction and examples of use here. Associated screenshots can be added next.',
+    message: 'Provide next set of usage instructions or leave blank to add a second image to the previous instructions. Screenshots can be added next.',
     name: 'usageStep2',
-    when: (answers) => answers.usageStep1,
+    when: (answers) => answers.usageStep1 || answers.usageStep1Image,
   },
   {
     type: 'input',
-    message: 'Provide alt text and relative path to the image you would like to show. use the following format: ![alt text](assets/images/screenshot.png)',
+    message: 'Leave blank to continue or provide image using the following format: ![alt text](assets/images/screenshot.png)',
     name: 'usageStep2Image',
-    when: (answers) => answers.usageStep1,
+    when: (answers) => answers.usageStep1 || answers.usageStep1Image,
   },
   {
     type: 'input',
-    message: 'Provide full instruction and examples of use here. Associated screenshots can be added next.',
+    message: 'Provide next set of usage instructions or leave blank to add a second image to the previous instructions. Screenshots can be added next.',
     name: 'usageRemainingSteps',
-    when: (answers) => answers.usageStep2,
+    when: (answers) => answers.usageStep2 || answers.usageStep2Image,
   },
   {
     type: 'input',
-    message: 'Provide alt text and relative path to the image you would like to show. use the following format: ![alt text](assets/images/screenshot.png)',
+    message: 'Leave blank to continue or provide image using the following format: ![alt text](assets/images/screenshot.png)',
     name: 'usageRemainingStepsImage',
-    when: (answers) => answers.usageStep2,
+    when: (answers) => answers.usageStep2 || answers.usageStep1Image,
   }
 ];
 
@@ -123,7 +123,7 @@ const creditsQuestions = [
   },
   {
     type: 'input',
-    message: 'List your collaborators, if any, with links to their GitHub profiles.',
+    message: 'List your collaborators with links to their GitHub profiles.',
     name: 'creditProfiles',
     when: (answers) => answers.creditsConfirm,
   },
@@ -135,7 +135,7 @@ const creditsQuestions = [
   },
   {
     type: 'input',
-    message: 'If you followed tutorials, include links to those here as well.',
+    message: 'If you followed tutorials, include links to those here.',
     name: 'creditTutorials',
     when: (answers) => answers.creditsConfirm,
   },
@@ -150,7 +150,7 @@ const licenseQuestions = [
   },
   {
     type: 'input',
-    message: 'The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).',
+    message: 'Insert license details here (Refer to https://choosealicense.com/ for more).',
     name: 'license',
     when: (answers) => answers.licenseConfirm,
   }
@@ -195,7 +195,7 @@ const contributeQuestions = [
   },
   {
     type: 'input',
-    message: "If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.",
+    message: "Include contribution guidance. See https://www.contributor-covenant.org/ for me.",
     name: 'contribute',
     when: (answers) => answers.contributeConfirm,
   }
@@ -210,7 +210,7 @@ const testsQuestions = [
   },
   {
     type: 'input',
-    message: 'Go the extra mile and write tests for your application.',
+    message: 'Include any tests for your application.',
     name: 'tests',
     when: (answers) => answers.testsConfirm,
   }
