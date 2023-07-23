@@ -59,14 +59,32 @@ const installationQuestions = [
       type: 'input',
       message: 'Enter the next step or leave empty to finish.',
       name: 'installationStep2',
-      when: (answers) => answers.installationConfirm,
+      when: (answers) => answers.installationStep1,
     },
     {
       type: 'input',
       message: 'Enter the next step or leave empty to finish.',
-      name: 'installationRemainingSteps',
-      when: (answers) => answers.installationConfirm && answers.installationStep2,
-    }
+      name: 'installationStep3',
+      when: (answers) => answers.installationStep2,
+    },
+    {
+      type: 'input',
+      message: 'Enter the next step or leave empty to finish.',
+      name: 'installationStep4',
+      when: (answers) => answers.installationStep3,
+    },    
+    {
+      type: 'input',
+      message: 'Enter the next step or leave empty to finish.',
+      name: 'installationStep5',
+      when: (answers) => answers.installationStep4,
+    },
+    {
+      type: 'input',
+      message: 'Enter the next step or leave empty to finish. Edit the README to add additional steps.',
+      name: 'installationStep6',
+      when: (answers) => answers.installationStep5,
+    },
 ];
 
 const usageQuestions = [
@@ -78,13 +96,13 @@ const usageQuestions = [
   },
   {
     type: 'input',
-    message: 'Provide full instructions for use or itemize each by entering 1st consideration here. Associated screenshots can be added next.',
+    message: 'Give instructions of an example of use. Associated screenshots can be added next.',
     name: 'usageEx1',
     when: (answers) => answers.usageConfirm,
   },
   {
     type: 'input',
-    message: 'Provide alt text and relative path to the image you would like to show using the following format: ![alt text](assets/images/screenshot.png)',
+    message: 'Provide alt text and relative path to the supporting image. Use the format: ![alt text](assets/images/screenshot.png)',
     name: 'usageEx1Image',
     when: (answers) => answers.usageConfirm,
   },
@@ -92,26 +110,62 @@ const usageQuestions = [
     type: 'input',
     message: 'Provide next set of usage instructions or leave blank to add a second image to the previous instructions. Screenshots can be added next.',
     name: 'usageEx2',
-    when: (answers) => answers.usageEx1 || answers.usageEx1Image,
+    when: (answers) => answers.usageEx1,
   },
   {
     type: 'input',
     message: 'Leave blank to continue or provide image using the following format: ![alt text](assets/images/screenshot.png)',
     name: 'usageEx2Image',
-    when: (answers) => answers.usageEx1 || answers.usageEx1Image,
+    when: (answers) => answers.usageEx2,
   },
   {
     type: 'input',
     message: 'Provide next set of usage instructions or leave blank to add a second image to the previous instructions. Screenshots can be added next.',
-    name: 'usageRemainingEx',
-    when: (answers) => answers.usageEx2 || answers.usageEx2Image,
+    name: 'usageEx3',
+    when: (answers) => answers.usageEx2,
   },
   {
     type: 'input',
     message: 'Leave blank to continue or provide image using the following format: ![alt text](assets/images/screenshot.png)',
-    name: 'usageRemainingExImage',
-    when: (answers) => answers.usageEx2 || answers.usageEx2Image,
-  }
+    name: 'usageEx3Image',
+    when: (answers) => answers.usageEx3,
+  },
+  {
+    type: 'input',
+    message: 'Provide next set of usage instructions or leave blank to add a second image to the previous instructions. Screenshots can be added next.',
+    name: 'usageEx4',
+    when: (answers) => answers.usageEx3,
+  },
+  {
+    type: 'input',
+    message: 'Leave blank to continue or provide image using the following format: ![alt text](assets/images/screenshot.png)',
+    name: 'usageEx4Image',
+    when: (answers) => answers.usageEx4,
+  },
+  {
+    type: 'input',
+    message: 'Provide next set of usage instructions or leave blank to add a second image to the previous instructions. Screenshots can be added next.',
+    name: 'usageEx5',
+    when: (answers) => answers.usageEx4,
+  },
+  {
+    type: 'input',
+    message: 'Leave blank to continue or provide image using the following format: ![alt text](assets/images/screenshot.png)',
+    name: 'usageEx5Image',
+    when: (answers) => answers.usageEx5,
+  },
+  {
+    type: 'input',
+    message: 'Provide next set of usage instructions or leave blank to add a second image to the previous instructions. Screenshots can be added next.',
+    name: 'usageEx6',
+    when: (answers) => answers.usageEx5,
+  },
+  {
+    type: 'input',
+    message: 'Leave blank to continue or provide image using the following format: ![alt text](assets/images/screenshot.png). Modify the README to add more examples and images.',
+    name: 'usageEx6Image',
+    when: (answers) => answers.usageEx6,
+  },
 ];
 
 const creditsQuestions = [
@@ -123,21 +177,111 @@ const creditsQuestions = [
   },
   {
     type: 'input',
+    message: 'List your collaborators with links to their GitHub profiles or leave blank if none.',
+    name: 'creditProfile1',
+    when: (answers) => answers.creditsConfirm,
+  },
+  {
+    type: 'input',
     message: 'List your collaborators with links to their GitHub profiles.',
-    name: 'creditProfiles',
+    name: 'creditProfile2',
+    when: (answers) => answers.creditProfile1,
+  },
+  {
+    type: 'input',
+    message: 'List your collaborators with links to their GitHub profiles.',
+    name: 'creditProfile3',
+    when: (answers) => answers.creditProfile2,
+  },
+  {
+    type: 'input',
+    message: 'List your collaborators with links to their GitHub profiles.',
+    name: 'creditProfile4',
+    when: (answers) => answers.creditProfile3,
+  },
+  {
+    type: 'input',
+    message: 'List your collaborators with links to their GitHub profiles.',
+    name: 'creditProfile5',
+    when: (answers) => answers.creditProfile4,
+  },
+  {
+    type: 'input',
+    message: 'List your collaborators with links to their GitHub profiles.',
+    name: 'creditProfile6',
+    when: (answers) => answers.creditProfile5,
+  },
+  {
+    type: 'input',
+    message: 'If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.',
+    name: 'credit3rdPartyAsset1',
     when: (answers) => answers.creditsConfirm,
   },
   {
     type: 'input',
     message: 'If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.',
-    name: 'credit3rdPartyAssets',
+    name: 'credit3rdPartyAsset2',
+    when: (answers) => answers.credit3rdPartyAsset1,
+  },
+  {
+    type: 'input',
+    message: 'If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.',
+    name: 'credit3rdPartyAsset3',
+    when: (answers) => answers.credit3rdPartyAsset2,
+  },
+  {
+    type: 'input',
+    message: 'If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.',
+    name: 'credit3rdPartyAsset4',
+    when: (answers) => answers.credit3rdPartyAsset3,
+  },
+  {
+    type: 'input',
+    message: 'If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.',
+    name: 'credit3rdPartyAsset5',
+    when: (answers) => answers.credit3rdPartyAsset4,
+  },
+  {
+    type: 'input',
+    message: 'If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.',
+    name: 'credit3rdPartyAsset6',
+    when: (answers) => answers.credit3rdPartyAsset5,
+  },
+  {
+    type: 'input',
+    message: 'If you followed tutorials, include links to those here.',
+    name: 'creditTutorial1',
     when: (answers) => answers.creditsConfirm,
   },
   {
     type: 'input',
     message: 'If you followed tutorials, include links to those here.',
-    name: 'creditTutorials',
-    when: (answers) => answers.creditsConfirm,
+    name: 'creditTutorial2',
+    when: (answers) => answers.creditTutorial1,
+  },
+  {
+    type: 'input',
+    message: 'If you followed tutorials, include links to those here.',
+    name: 'creditTutorial3',
+    when: (answers) => answers.creditTutorial2,
+  },
+  {
+    type: 'input',
+    message: 'If you followed tutorials, include links to those here.',
+    name: 'creditTutorial4',
+    when: (answers) => answers.creditTutorial3,
+  },
+  {
+    type: 'input',
+    message: 'If you followed tutorials, include links to those here.',
+    name: 'creditTutorial5',
+    when: (answers) => answers.creditTutorial4,
+  },
+  {
+    type: 'input',
+    message: 'If you followed tutorials, include links to those here.',
+    name: 'creditTutorial6',
+    when: (answers) => answers.creditTutorial5,
   },
 ];
 
@@ -166,8 +310,38 @@ const badgesQuestions = [
   {
     type: 'input',
     message: "If you have badges, use the following format: ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)",
-    name: 'badges',
+    name: 'badge1',
     when: (answers) => answers.badgesConfirm,
+  },
+  {
+    type: 'input',
+    message: "If you have badges, use the following format: ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)",
+    name: 'badge2',
+    when: (answers) => answers.badge1,
+  },
+  {
+    type: 'input',
+    message: "If you have badges, use the following format: ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)",
+    name: 'badge3',
+    when: (answers) => answers.badge2,
+  },
+  {
+    type: 'input',
+    message: "If you have badges, use the following format: ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)",
+    name: 'badge4',
+    when: (answers) => answers.badge3,
+  },
+  {
+    type: 'input',
+    message: "If you have badges, use the following format: ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)",
+    name: 'badge5',
+    when: (answers) => answers.badge4,
+  },
+  {
+    type: 'input',
+    message: "If you have badges, use the following format: ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)",
+    name: 'badge6',
+    when: (answers) => answers.badge5,
   }
 ];
 
@@ -180,10 +354,40 @@ const featuresQuestions = [
   },
   {
     type: 'input',
-    message: 'If your project has a lot of features, list them here.',
-    name: 'features',
+    message: 'List your 1st feature:',
+    name: 'feature1',
     when: (answers) => answers.featuresConfirm,
-  }
+  },
+  {
+    type: 'input',
+    message: 'List your next feature or leave blank to go to the next section.',
+    name: 'feature2',
+    when: (answers) => answers.feature1,
+  },
+  {
+    type: 'input',
+    message: 'List your next feature or leave blank to go to the next section.',
+    name: 'feature3',
+    when: (answers) => answers.feature2,
+  },
+  {
+    type: 'input',
+    message: 'List your next feature or leave blank to go to the next section.',
+    name: 'feature4',
+    when: (answers) => answers.feature3,
+  },
+  {
+    type: 'input',
+    message: 'List your next feature or leave blank to go to the next section.',
+    name: 'feature5',
+    when: (answers) => answers.feature4,
+  },
+  {
+    type: 'input',
+    message: 'List your next feature or leave blank to go to the next section.',
+    name: 'feature6',
+    when: (answers) => answers.feature5,
+  },
 ];
 
 const contributeQuestions = [
@@ -195,7 +399,7 @@ const contributeQuestions = [
   },
   {
     type: 'input',
-    message: "Include contribution guidance. See https://www.contributor-covenant.org/ for me.",
+    message: "Include contribution guidance. See https://www.contributor-covenant.org/ for more.",
     name: 'contribute',
     when: (answers) => answers.contributeConfirm,
   }
@@ -211,12 +415,42 @@ const testsQuestions = [
   {
     type: 'input',
     message: 'Include any tests for your application.',
-    name: 'tests',
+    name: 'test1',
     when: (answers) => answers.testsConfirm,
-  }
+  },
+  {
+    type: 'input',
+    message: 'Include any tests for your application.',
+    name: 'test2',
+    when: (answers) => answers.test1,
+  },
+  {
+    type: 'input',
+    message: 'Include any tests for your application.',
+    name: 'test3',
+    when: (answers) => answers.test2,
+  }, 
+  {
+    type: 'input',
+    message: 'Include any tests for your application.',
+    name: 'test4',
+    when: (answers) => answers.test3,
+  }, 
+  {
+    type: 'input',
+    message: 'Include any tests for your application.',
+    name: 'test5',
+    when: (answers) => answers.test4,
+  }, 
+  {
+    type: 'input',
+    message: 'Include any tests for your application.',
+    name: 'test6',
+    when: (answers) => answers.test5,
+  },
 ];
 
-// // Recursive function to ask a question repeatedly until a blank response
+// // Recursive function to ask a question repeatedly until a blank response -- UNUSED CONCEPT
 // function askUntilBlank(question, fieldName, answers) {
 //   return inquirer
 //     .prompt([
@@ -244,10 +478,10 @@ function generateReadmeContent(answers) {
   // Build the DESCRIPTION section
   if (answers.descriptionConfirm) {
     content += '## Description\n';
-    content += '#### Motivation:\n ' + answers.motivation +'\n\n';
-    content += '#### Why Build:\n' + answers.whyBuild + '\n\n';
-    content += '#### Problem Solved:\n' + answers.problemSolved + '\n\n';
-    content += '#### What Was Learned:\n' + answers.whatWasLearned + '\n\n';
+    content += answers.motivation ? '#### Motivation:\n' + answers.motivation +'\n\n' : '';
+    content += answers.whyBuild ? '#### Why Build:\n' + answers.whyBuild + '\n\n' : '';
+    content += answers.problemSolved ? '#### Problem Solved:\n' + answers.problemSolved + '\n\n' : '';
+    content += answers.whatWasLearned ? '#### What Was Learned:\n' + answers.whatWasLearned + '\n\n' : '';
   }
 
   // Create the Table of Contents
@@ -279,63 +513,57 @@ function generateReadmeContent(answers) {
   content += '## Table of Contents\n' + tableOfContents.join('\n') + '\n\n';
 
   
-   // Build the INSTALLATION section
+  // Build the INSTALLATION section
   if (answers.installationConfirm) {
-    installationContent = 
-      '#### Step 1:\n' + answers.installationStep1;
-    if (answers.installationStep2) {
-      installationContent += '\n\n#### Step 2:\n' + answers.installationStep2;
-    }
-    if (answers.installationRemainingSteps) {
-      installationContent +=
-        '\n\n#### Step 3:\n' + answers.installationRemainingSteps;
-    }
-    content += '## Installation\n' + installationContent + '\n\n';
-
-    
-    const steps = answers.installationRemainingSteps.split
-    let s=3;
-    while (s < steps.length && steps[n] !== '') {
-      installationContent += `Step ${s + 1}: ${steps[s+1]}\n\n`;
-      i++;
-    }
+    content += '## Installation Instructions' + '\n';
+    content += '#### Step 1:\n' + answers.installationStep1 + '\n\n';
+    content += answers.installationStep2 !== '' && answers.installationStep2 !== undefined ? '#### Step 2:\n' + answers.installationStep2 + '\n\n' : '';
+    content += answers.installationStep3 !== '' && answers.installationStep3 !== undefined ? '#### Step 3:\n' + answers.installationStep3 + '\n\n' : '';
+    content += answers.installationStep4 !== '' && answers.installationStep4 !== undefined ? '#### Step 4:\n' + answers.installationStep4 + '\n\n' : '';
+    content += answers.installationStep5 !== '' && answers.installationStep5 !== undefined ? '#### Step 5:\n' + answers.installationStep5 + '\n\n' : '';
+    content += answers.installationStep6 !== '' && answers.installationStep6 !== undefined ? '#### Step 6:\n' + answers.installationStep6 + '\n\n' : '';
   }
 
-  // if (answers.installationConfirm && answers.installationStep1) {
-  //   installationContent = 
-  //     '#### Step 1:\n' + answers.installationStep1;
-  //   if (answers.installationStep2) {
-  //     installationContent += '\n\n#### Step 2:\n' + answers.installationStep2;
-  //   }
-  //   if (answers.installationRemainingSteps) {
-  //     installationContent +=
-  //       '\n\n#### Remaining Steps:\n' + answers.installationRemainingSteps;
-  //   }
-  //   content += '## Installation\n' + installationContent + '\n\n';
-  // }
-
-  //Build the USAGE section
+  // Build the USAGE section
   if (answers.usageConfirm) {
     content += '## Usage\n';
     content += '#### Example 1:\n' + answers.usageEx1 + '\n\n';
-    content += answers.usageEx1Image + '\n\n';
-    if (answers.usageEx2) {
-      content += '#### Example 2:\n' + answers.usageEx2 + '\n\n';
-      content += answers.usageEx2Image + '\n\n';
-    }
-    if (answers.usageRemainingEx) {
-      content += '#### Example 3:\n' + answers.usageRemainingEx + '\n\n';
-      content += answers.usageRemainingExImage + '\n\n';
-    }
+    content += answers.usageEx1Image !== '' && answers.usageEx1Image !== undefined ? answers.usageEx1Image + '\n\n' : '';
+    content += answers.usageEx2 !== '' && answers.usageEx2 !== undefined ? '#### Example 2:\n' + answers.usageEx2 + '\n\n' : '';
+    content += answers.usageEx2Image !== '' && answers.usageEx2Image !== undefined ? answers.usageEx2Image + '\n\n' : '';
+    content += answers.usageEx3 !== '' && answers.usageEx3 !== undefined ? '#### Example 3:\n' + answers.usageEx3 + '\n\n' : '';
+    content += answers.usageEx3Image !== '' && answers.usageEx3Image !== undefined ? answers.usageEx3Image + '\n\n' : '';
+    content += answers.usageEx4 !== '' && answers.usageEx4 !== undefined ? '#### Example 4:\n' + answers.usageEx4 + '\n\n' : '';
+    content += answers.usageEx4Image !== '' && answers.usageEx4Image !== undefined ? answers.usageEx4Image + '\n\n' : '';
+    content += answers.usageEx5 !== '' && answers.usageEx5 !== undefined ? '#### Example 5:\n' + answers.usageEx5 + '\n\n' : '';
+    content += answers.usageEx5Image !== '' && answers.usageEx5Image !== undefined ? answers.usageEx5Image + '\n\n' : '';
+    content += answers.usageEx6 !== '' && answers.usageEx6 !== undefined ? '#### Example 6:\n' + answers.usageEx6 + '\n\n' : '';
+    content += answers.usageEx6Image !== '' && answers.usageEx6Image !== undefined ? answers.usageEx6Image + '\n\n' : '';
   }
 
-  //Build the CREDITS section
+  // Build the CREDITS section
   if (answers.creditsConfirm) {
     content += '## Credits\n';
-    content += '#### Individual Credits:\n' + answers.creditProfiles + '\n\n';
-    content += '#### Third-Party Assets:\n' + answers.credit3rdPartyAssets + '\n\n';
-    content += '#### Tutorials Followed:\n' + answers.creditTutorials + '\n\n';
+    content += answers.creditProfile1 ? '#### Individual Credits:\n' + '  * ' + answers.creditProfile1+ '\n\n' : '';
+    content += answers.creditProfile2 ? '  * ' + answers.creditProfile2 + '\n\n' : '';
+    content += answers.creditProfile3 ? '  * ' + answers.creditProfile3 + '\n\n' : '';
+    content += answers.creditProfile4 ? '  * ' + answers.creditProfile4 + '\n\n' : '';
+    content += answers.creditProfile5 ? '  * ' + answers.creditProfile5 + '\n\n' : '';
+    content += answers.creditProfile6 ? '  * ' + answers.creditProfile6 + '\n\n' : '';
+    content += answers.credit3rdPartyAsset1 ? '#### Third-Party Assets:\n' + '  * ' + answers.credit3rdPartyAsset1 + '\n\n' : '';
+    content += answers.credit3rdPartyAsset2 ? '  * ' + answers.credit3rdPartyAsset2 + '\n\n' : '';
+    content += answers.credit3rdPartyAsset3 ? '  * ' + answers.credit3rdPartyAsset3 + '\n\n' : '';
+    content += answers.credit3rdPartyAsset4 ? '  * ' + answers.credit3rdPartyAsset4 + '\n\n' : '';
+    content += answers.credit3rdPartyAsset5 ? '  * ' + answers.credit3rdPartyAsset5 + '\n\n' : '';
+    content += answers.credit3rdPartyAsset6 ? '  * ' + answers.credit3rdPartyAsset6 + '\n\n' : '';
+    content += answers.creditTutorial1 ? '#### Tutorials Followed:\n' + '  * ' + answers.creditTutorial1 + '\n\n' : '';
+    content += answers.creditTutorial2 ? '  * ' + answers.creditTutorial2 + '\n\n' : '';
+    content += answers.creditTutorial3 ? '  * ' + answers.creditTutorial3 + '\n\n' : '';
+    content += answers.creditTutorial4 ? '  * ' + answers.creditTutorial4 + '\n\n' : '';
+    content += answers.creditTutorial5 ? '  * ' + answers.creditTutorial5 + '\n\n' : '';
+    content += answers.creditTutorial6 ? '  * ' + answers.creditTutorial6 + '\n\n' : '';
   }
+
 
   //Build the LICENSE section
   if (answers.licenseConfirm) {
