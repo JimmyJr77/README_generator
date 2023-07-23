@@ -11,17 +11,15 @@ Fish are aquatic animals that live in various bodies of water and are known for 
 Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
 
 #### What Was Learned:
-
+Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
 
 ## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
-- [Badges](#badges)
-- [Features](#features)
-- [How to Contribute](#how-to-contribute)
-- [Tests](#tests)
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Credits](#credits)
+  * [Badges](#badges)
+  * [How to Contribute](#how-to-contribute)
+  * [Tests](#tests)
 
 ## Installation
 #### Step 1:
@@ -30,14 +28,21 @@ Fish are aquatic animals that live in various bodies of water and are known for 
 #### Step 2:
 Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
 
-#### Step 3:
-Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
-
 ## Usage
 #### Step 1:
 Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
 
 
+
+#### Step 2:
+Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
+
+
+
+#### Remaining Steps:
+test
+
+test
 
 ## Credits
 Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
@@ -46,16 +51,10 @@ Fish are aquatic animals that live in various bodies of water and are known for 
 Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
 
 #### Tutorials Followed:
-
-
-## License
-Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
+Fish are aquatic animals that live in various bodies
 
 ## Badges
-Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
-
-## Features
-Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.
+Fish are aquatic animals that live in various bodies
 
 ## How to Contribute
 Fish are aquatic animals that live in various bodies of water and are known for their streamlined bodies and gills, allowing them to extract oxygen from water and thrive in their underwater habitats.

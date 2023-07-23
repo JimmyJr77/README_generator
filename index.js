@@ -66,7 +66,7 @@ const installationQuestions = [
       message: 'Enter the next step or leave empty to finish.',
       name: 'installationRemainingSteps',
       when: (answers) => answers.installationConfirm && answers.installationStep2,
-    },
+    }
 ];
 
 const usageQuestions = [
@@ -216,31 +216,32 @@ const testsQuestions = [
   }
 ];
 
-// Recursive function to ask a question repeatedly until a blank response
-function askUntilBlank(question, fieldName, answers) {
-  return inquirer
-    .prompt([
-      {
-        type: 'input',
-        message: question,
-        name: fieldName,
-      },
-    ])
-    .then((response) => {
-      const fieldValue = response[fieldName].trim();
-      if (fieldValue !== '') {
-        // Append the response to the respective field in answers
-        answers[fieldName] += '\n' + fieldValue;
-        return askUntilBlank(question, fieldName, answers);
-      }
-      return answers;
-    });
-}
+// // Recursive function to ask a question repeatedly until a blank response
+// function askUntilBlank(question, fieldName, answers) {
+//   return inquirer
+//     .prompt([
+//       {
+//         type: 'input',
+//         message: question,
+//         name: fieldName,
+//       },
+//     ])
+//     .then((response) => {
+//       const fieldValue = response[fieldName].trim();
+//       if (fieldValue !== '') {
+//         // Append the response to the respective field in answers
+//         answers[fieldName] += '\n' + fieldValue;
+//         return askUntilBlank(question, fieldName, answers);
+//       }
+//       return answers;
+//     });
+// }
 
 // TODO: Create a function to generate README file content based on user answers
 function generateReadmeContent(answers) {
   let content = '# ' + answers.projectTitle + '\n\n';
 
+  // Build the DESCRIPTION section
   if (answers.descriptionConfirm) {
     descriptionContent =
       '#### Motivation:\n ' + answers.motivation +'\n\n' + 
@@ -253,31 +254,33 @@ function generateReadmeContent(answers) {
   // Create the Table of Contents
   let tableOfContents = [];
   if (answers.installationConfirm) {
-    tableOfContents.push('- [Installation](#installation)');
+    tableOfContents.push('  * [Installation](#installation)');
   }
   if (answers.usageConfirm) {
-    tableOfContents.push('- [Usage](#usage)');
+    tableOfContents.push('  * [Usage](#usage)');
   }
   if (answers.creditsConfirm) {
-    tableOfContents.push('- [Credits](#credits)');
+    tableOfContents.push('  * [Credits](#credits)');
   }
   if (answers.licenseConfirm) {
-    tableOfContents.push('- [License](#license)');
+    tableOfContents.push('  * [License](#license)');
   }
   if (answers.badgesConfirm) {
-    tableOfContents.push('- [Badges](#badges)');
+    tableOfContents.push('  * [Badges](#badges)');
   }
   if (answers.featuresConfirm) {
-    tableOfContents.push('- [Features](#features)');
+    tableOfContents.push('  * [Features](#features)');
   }
   if (answers.contributeConfirm) {
-    tableOfContents.push('- [How to Contribute](#how-to-contribute)');
+    tableOfContents.push('  * [How to Contribute](#how-to-contribute)');
   }
   if (answers.testsConfirm) {
-    tableOfContents.push('- [Tests](#tests)');
+    tableOfContents.push('  * [Tests](#tests)');
   }
   content += '## Table of Contents\n' + tableOfContents.join('\n') + '\n\n';
 
+  
+   // Build the INSTALLATION section
   if (answers.installationConfirm) {
     installationContent = 
       '#### Step 1:\n' + answers.installationStep1;
@@ -289,7 +292,8 @@ function generateReadmeContent(answers) {
         '\n\n#### Step 3:\n' + answers.installationRemainingSteps;
     }
     content += '## Installation\n' + installationContent + '\n\n';
-    //     const steps = answers.installationSteps.split('\n');
+
+    
     const steps = answers.installationRemainingSteps.split
     let s=3;
     while (s < steps.length && steps[n] !== '') {
@@ -311,6 +315,7 @@ function generateReadmeContent(answers) {
   //   content += '## Installation\n' + installationContent + '\n\n';
   // }
 
+  //Build the USAGE section
   if (answers.usageConfirm) {
     content += '## Usage\n';
     content += '#### Step 1:\n' + answers.usageStep1 + '\n\n';
@@ -325,28 +330,34 @@ function generateReadmeContent(answers) {
     }
   }
 
+  //Build the CREDITS section
   if (answers.creditsConfirm) {
     content += '## Credits\n' + answers.creditProfiles + '\n\n';
     content += '#### Third-Party Assets:\n' + answers.credit3rdPartyAssets + '\n\n';
     content += '#### Tutorials Followed:\n' + answers.creditTutorials + '\n\n';
   }
 
+  //Build the LICENSE section
   if (answers.licenseConfirm) {
     content += '## License\n' + answers.license + '\n\n';
   }
 
+  //Build the BADGES section
   if (answers.badgesConfirm) {
     content += '## Badges\n' + answers.badges + '\n\n';
   }
 
+  //Build the FEATURES section
   if (answers.featuresConfirm) {
     content += '## Features\n' + answers.features + '\n\n';
   }
 
+  //Build the HOW TO CONTRIBUTE section
   if (answers.contributeConfirm) {
     content += '## How to Contribute\n' + answers.contribute + '\n\n';
   }
 
+  //Build the TESTS section
   if (answers.testsConfirm) {
     content += '## Tests\n' + answers.tests + '\n\n';
   }
@@ -438,22 +449,3 @@ inquirer.prompt(descriptionQuestions).then((descriptionAnswers) => {
     });
   });
 });
-
-
-
-//   let installationContent = 'No installation instructions provided.';
-//   if (answers.installationConfirm && answers.installationSteps) {
-//     const steps = answers.installationSteps.split('\n');
-//     installationContent = '';
-//     let i = 0;
-//     while (i < steps.length && steps[i] !== '') {
-//       installationContent += `Step ${i + 1}: ${steps[i]}\n\n`;
-//       i++;
-//     }
-//   }
-//   return '# ' + answers.projectTitle + '\n\n' +
-//     '## Description\n' +
-//     descriptionContent + '\n\n' +
-//     '## Installation\n' +
-//     installationContent + '\n\n' ;
-// }
