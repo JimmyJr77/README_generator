@@ -79,38 +79,38 @@ const usageQuestions = [
   {
     type: 'input',
     message: 'Provide full instructions for use or itemize each by entering 1st consideration here. Associated screenshots can be added next.',
-    name: 'usageStep1',
+    name: 'usageEx1',
     when: (answers) => answers.usageConfirm,
   },
   {
     type: 'input',
     message: 'Provide alt text and relative path to the image you would like to show using the following format: ![alt text](assets/images/screenshot.png)',
-    name: 'usageStep1Image',
+    name: 'usageEx1Image',
     when: (answers) => answers.usageConfirm,
   },
   {
     type: 'input',
     message: 'Provide next set of usage instructions or leave blank to add a second image to the previous instructions. Screenshots can be added next.',
-    name: 'usageStep2',
-    when: (answers) => answers.usageStep1 || answers.usageStep1Image,
+    name: 'usageEx2',
+    when: (answers) => answers.usageEx1 || answers.usageEx1Image,
   },
   {
     type: 'input',
     message: 'Leave blank to continue or provide image using the following format: ![alt text](assets/images/screenshot.png)',
-    name: 'usageStep2Image',
-    when: (answers) => answers.usageStep1 || answers.usageStep1Image,
+    name: 'usageEx2Image',
+    when: (answers) => answers.usageEx1 || answers.usageEx1Image,
   },
   {
     type: 'input',
     message: 'Provide next set of usage instructions or leave blank to add a second image to the previous instructions. Screenshots can be added next.',
-    name: 'usageRemainingSteps',
-    when: (answers) => answers.usageStep2 || answers.usageStep2Image,
+    name: 'usageRemainingEx',
+    when: (answers) => answers.usageEx2 || answers.usageEx2Image,
   },
   {
     type: 'input',
     message: 'Leave blank to continue or provide image using the following format: ![alt text](assets/images/screenshot.png)',
-    name: 'usageRemainingStepsImage',
-    when: (answers) => answers.usageStep2 || answers.usageStep1Image,
+    name: 'usageRemainingExImage',
+    when: (answers) => answers.usageEx2 || answers.usageEx2Image,
   }
 ];
 
@@ -243,12 +243,11 @@ function generateReadmeContent(answers) {
 
   // Build the DESCRIPTION section
   if (answers.descriptionConfirm) {
-    descriptionContent =
-      '#### Motivation:\n ' + answers.motivation +'\n\n' + 
-      '#### Why Build:\n' + answers.whyBuild + '\n\n' +
-      '#### Problem Solved:\n' + answers.problemSolved + '\n\n' +
-      '#### What Was Learned:\n' + answers.whatWasLearned;
-      content += '## Description\n' + descriptionContent + '\n\n';
+    content += '## Description\n';
+    content += '#### Motivation:\n ' + answers.motivation +'\n\n';
+    content += '#### Why Build:\n' + answers.whyBuild + '\n\n';
+    content += '#### Problem Solved:\n' + answers.problemSolved + '\n\n';
+    content += '#### What Was Learned:\n' + answers.whatWasLearned + '\n\n';
   }
 
   // Create the Table of Contents
@@ -318,21 +317,22 @@ function generateReadmeContent(answers) {
   //Build the USAGE section
   if (answers.usageConfirm) {
     content += '## Usage\n';
-    content += '#### Step 1:\n' + answers.usageStep1 + '\n\n';
-    content += answers.usageStep1Image + '\n\n';
-    if (answers.usageStep2) {
-      content += '#### Step 2:\n' + answers.usageStep2 + '\n\n';
-      content += answers.usageStep2Image + '\n\n';
+    content += '#### Example 1:\n' + answers.usageEx1 + '\n\n';
+    content += answers.usageEx1Image + '\n\n';
+    if (answers.usageEx2) {
+      content += '#### Example 2:\n' + answers.usageEx2 + '\n\n';
+      content += answers.usageEx2Image + '\n\n';
     }
-    if (answers.usageRemainingSteps) {
-      content += '#### Remaining Steps:\n' + answers.usageRemainingSteps + '\n\n';
-      content += answers.usageRemainingStepsImage + '\n\n';
+    if (answers.usageRemainingEx) {
+      content += '#### Example 3:\n' + answers.usageRemainingEx + '\n\n';
+      content += answers.usageRemainingExImage + '\n\n';
     }
   }
 
   //Build the CREDITS section
   if (answers.creditsConfirm) {
-    content += '## Credits\n' + answers.creditProfiles + '\n\n';
+    content += '## Credits\n';
+    content += '#### Individual Credits:\n' + answers.creditProfiles + '\n\n';
     content += '#### Third-Party Assets:\n' + answers.credit3rdPartyAssets + '\n\n';
     content += '#### Tutorials Followed:\n' + answers.creditTutorials + '\n\n';
   }
