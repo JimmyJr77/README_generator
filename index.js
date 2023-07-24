@@ -512,58 +512,106 @@ function generateReadmeContent(answers) {
   }
   content += '## Table of Contents\n' + tableOfContents.join('\n') + '\n\n';
 
-  
   // Build the INSTALLATION section
+  // if (answers.installationConfirm) {
+  //   content += '## Installation Instructions' + '\n';
+  //   content += '#### Step 1:\n' + answers.installationStep1 + '\n\n';
+  //   content += answers.installationStep2 !== '' && answers.installationStep2 !== undefined ? '#### Step 2:\n' + answers.installationStep2 + '\n\n' : '';
+  //   content += answers.installationStep3 !== '' && answers.installationStep3 !== undefined ? '#### Step 3:\n' + answers.installationStep3 + '\n\n' : '';
+  //   content += answers.installationStep4 !== '' && answers.installationStep4 !== undefined ? '#### Step 4:\n' + answers.installationStep4 + '\n\n' : '';
+  //   content += answers.installationStep5 !== '' && answers.installationStep5 !== undefined ? '#### Step 5:\n' + answers.installationStep5 + '\n\n' : '';
+  //   content += answers.installationStep6 !== '' && answers.installationStep6 !== undefined ? '#### Step 6:\n' + answers.installationStep6 + '\n\n' : '';
+  // }
+
   if (answers.installationConfirm) {
-    content += '## Installation Instructions' + '\n';
-    content += '#### Step 1:\n' + answers.installationStep1 + '\n\n';
-    content += answers.installationStep2 !== '' && answers.installationStep2 !== undefined ? '#### Step 2:\n' + answers.installationStep2 + '\n\n' : '';
-    content += answers.installationStep3 !== '' && answers.installationStep3 !== undefined ? '#### Step 3:\n' + answers.installationStep3 + '\n\n' : '';
-    content += answers.installationStep4 !== '' && answers.installationStep4 !== undefined ? '#### Step 4:\n' + answers.installationStep4 + '\n\n' : '';
-    content += answers.installationStep5 !== '' && answers.installationStep5 !== undefined ? '#### Step 5:\n' + answers.installationStep5 + '\n\n' : '';
-    content += answers.installationStep6 !== '' && answers.installationStep6 !== undefined ? '#### Step 6:\n' + answers.installationStep6 + '\n\n' : '';
+    content += '## Installation Instructions\n';
+
+    let i = 1;
+    while (answers[`installationStep${i}`] !== undefined) {
+      content += answers[`installationStep${i}`] !== '' && answers[`installationStep${i}`] !== undefined
+        ? `#### Step ${i}:\n${answers[`installationStep${i}`]}\n\n`
+        : '';
+      i++;
+    }
   }
+
+  // // Build the USAGE section
+  // if (answers.usageConfirm) {
+  //   content += '## Usage\n';
+  //   content += '#### Example 1:\n' + answers.usageEx1 + '\n\n';
+  //   content += answers.usageEx1Image !== '' && answers.usageEx1Image !== undefined ? answers.usageEx1Image + '\n\n' : '';
+  //   content += answers.usageEx2 !== '' && answers.usageEx2 !== undefined ? '#### Example 2:\n' + answers.usageEx2 + '\n\n' : '';
+  //   content += answers.usageEx2Image !== '' && answers.usageEx2Image !== undefined ? answers.usageEx2Image + '\n\n' : '';
+  //   content += answers.usageEx3 !== '' && answers.usageEx3 !== undefined ? '#### Example 3:\n' + answers.usageEx3 + '\n\n' : '';
+  //   content += answers.usageEx3Image !== '' && answers.usageEx3Image !== undefined ? answers.usageEx3Image + '\n\n' : '';
+  //   content += answers.usageEx4 !== '' && answers.usageEx4 !== undefined ? '#### Example 4:\n' + answers.usageEx4 + '\n\n' : '';
+  //   content += answers.usageEx4Image !== '' && answers.usageEx4Image !== undefined ? answers.usageEx4Image + '\n\n' : '';
+  //   content += answers.usageEx5 !== '' && answers.usageEx5 !== undefined ? '#### Example 5:\n' + answers.usageEx5 + '\n\n' : '';
+  //   content += answers.usageEx5Image !== '' && answers.usageEx5Image !== undefined ? answers.usageEx5Image + '\n\n' : '';
+  //   content += answers.usageEx6 !== '' && answers.usageEx6 !== undefined ? '#### Example 6:\n' + answers.usageEx6 + '\n\n' : '';
+  //   content += answers.usageEx6Image !== '' && answers.usageEx6Image !== undefined ? answers.usageEx6Image + '\n\n' : '';
+  // }
 
   // Build the USAGE section
   if (answers.usageConfirm) {
     content += '## Usage\n';
-    content += '#### Example 1:\n' + answers.usageEx1 + '\n\n';
-    content += answers.usageEx1Image !== '' && answers.usageEx1Image !== undefined ? answers.usageEx1Image + '\n\n' : '';
-    content += answers.usageEx2 !== '' && answers.usageEx2 !== undefined ? '#### Example 2:\n' + answers.usageEx2 + '\n\n' : '';
-    content += answers.usageEx2Image !== '' && answers.usageEx2Image !== undefined ? answers.usageEx2Image + '\n\n' : '';
-    content += answers.usageEx3 !== '' && answers.usageEx3 !== undefined ? '#### Example 3:\n' + answers.usageEx3 + '\n\n' : '';
-    content += answers.usageEx3Image !== '' && answers.usageEx3Image !== undefined ? answers.usageEx3Image + '\n\n' : '';
-    content += answers.usageEx4 !== '' && answers.usageEx4 !== undefined ? '#### Example 4:\n' + answers.usageEx4 + '\n\n' : '';
-    content += answers.usageEx4Image !== '' && answers.usageEx4Image !== undefined ? answers.usageEx4Image + '\n\n' : '';
-    content += answers.usageEx5 !== '' && answers.usageEx5 !== undefined ? '#### Example 5:\n' + answers.usageEx5 + '\n\n' : '';
-    content += answers.usageEx5Image !== '' && answers.usageEx5Image !== undefined ? answers.usageEx5Image + '\n\n' : '';
-    content += answers.usageEx6 !== '' && answers.usageEx6 !== undefined ? '#### Example 6:\n' + answers.usageEx6 + '\n\n' : '';
-    content += answers.usageEx6Image !== '' && answers.usageEx6Image !== undefined ? answers.usageEx6Image + '\n\n' : '';
+
+    let i = 1;
+    while (answers[`usageEx${i}`] !== undefined && answers[`usageEx${i}`] !== '') {
+      content += `#### Example ${i}:\n${answers[`usageEx${i}`]}\n\n`;
+      if (answers[`usageEx${i}Image`] !== '' && answers[`usageEx${i}Image`] !== undefined) {
+        content += answers[`usageEx${i}Image`] + '\n\n';
+      }
+      i++;
+    }
   }
 
   // Build the CREDITS section
+  // if (answers.creditsConfirm) {
+  //   content += '## Credits\n';
+  //   content += answers.creditProfile1 ? '#### Individual Credits:\n' + '  * ' + answers.creditProfile1+ '\n\n' : '';
+  //   content += answers.creditProfile2 ? '  * ' + answers.creditProfile2 + '\n\n' : '';
+  //   content += answers.creditProfile3 ? '  * ' + answers.creditProfile3 + '\n\n' : '';
+  //   content += answers.creditProfile4 ? '  * ' + answers.creditProfile4 + '\n\n' : '';
+  //   content += answers.creditProfile5 ? '  * ' + answers.creditProfile5 + '\n\n' : '';
+  //   content += answers.creditProfile6 ? '  * ' + answers.creditProfile6 + '\n\n' : '';
+  //   content += answers.credit3rdPartyAsset1 ? '#### Third-Party Assets:\n' + '  * ' + answers.credit3rdPartyAsset1 + '\n\n' : '';
+  //   content += answers.credit3rdPartyAsset2 ? '  * ' + answers.credit3rdPartyAsset2 + '\n\n' : '';
+  //   content += answers.credit3rdPartyAsset3 ? '  * ' + answers.credit3rdPartyAsset3 + '\n\n' : '';
+  //   content += answers.credit3rdPartyAsset4 ? '  * ' + answers.credit3rdPartyAsset4 + '\n\n' : '';
+  //   content += answers.credit3rdPartyAsset5 ? '  * ' + answers.credit3rdPartyAsset5 + '\n\n' : '';
+  //   content += answers.credit3rdPartyAsset6 ? '  * ' + answers.credit3rdPartyAsset6 + '\n\n' : '';
+  //   content += answers.creditTutorial1 ? '#### Tutorials Followed:\n' + '  * ' + answers.creditTutorial1 + '\n\n' : '';
+  //   content += answers.creditTutorial2 ? '  * ' + answers.creditTutorial2 + '\n\n' : '';
+  //   content += answers.creditTutorial3 ? '  * ' + answers.creditTutorial3 + '\n\n' : '';
+  //   content += answers.creditTutorial4 ? '  * ' + answers.creditTutorial4 + '\n\n' : '';
+  //   content += answers.creditTutorial5 ? '  * ' + answers.creditTutorial5 + '\n\n' : '';
+  //   content += answers.creditTutorial6 ? '  * ' + answers.creditTutorial6 + '\n\n' : '';
+  // }
+
   if (answers.creditsConfirm) {
     content += '## Credits\n';
-    content += answers.creditProfile1 ? '#### Individual Credits:\n' + '  * ' + answers.creditProfile1+ '\n\n' : '';
-    content += answers.creditProfile2 ? '  * ' + answers.creditProfile2 + '\n\n' : '';
-    content += answers.creditProfile3 ? '  * ' + answers.creditProfile3 + '\n\n' : '';
-    content += answers.creditProfile4 ? '  * ' + answers.creditProfile4 + '\n\n' : '';
-    content += answers.creditProfile5 ? '  * ' + answers.creditProfile5 + '\n\n' : '';
-    content += answers.creditProfile6 ? '  * ' + answers.creditProfile6 + '\n\n' : '';
-    content += answers.credit3rdPartyAsset1 ? '#### Third-Party Assets:\n' + '  * ' + answers.credit3rdPartyAsset1 + '\n\n' : '';
-    content += answers.credit3rdPartyAsset2 ? '  * ' + answers.credit3rdPartyAsset2 + '\n\n' : '';
-    content += answers.credit3rdPartyAsset3 ? '  * ' + answers.credit3rdPartyAsset3 + '\n\n' : '';
-    content += answers.credit3rdPartyAsset4 ? '  * ' + answers.credit3rdPartyAsset4 + '\n\n' : '';
-    content += answers.credit3rdPartyAsset5 ? '  * ' + answers.credit3rdPartyAsset5 + '\n\n' : '';
-    content += answers.credit3rdPartyAsset6 ? '  * ' + answers.credit3rdPartyAsset6 + '\n\n' : '';
-    content += answers.creditTutorial1 ? '#### Tutorials Followed:\n' + '  * ' + answers.creditTutorial1 + '\n\n' : '';
-    content += answers.creditTutorial2 ? '  * ' + answers.creditTutorial2 + '\n\n' : '';
-    content += answers.creditTutorial3 ? '  * ' + answers.creditTutorial3 + '\n\n' : '';
-    content += answers.creditTutorial4 ? '  * ' + answers.creditTutorial4 + '\n\n' : '';
-    content += answers.creditTutorial5 ? '  * ' + answers.creditTutorial5 + '\n\n' : '';
-    content += answers.creditTutorial6 ? '  * ' + answers.creditTutorial6 + '\n\n' : '';
-  }
+    content += answers.creditProfile1 ? '#### Individual Credits:\n\n' : '';
+    let i = 1;
+    while (answers[`creditProfile${i}`] !== undefined) {
+      content += answers[`creditProfile${i}`] ? `  * ${answers[`creditProfile${i}`]}\n\n` : '';
+      i++;
+    }
 
+    content += answers.credit3rdPartyAsset1 ? '#### Third-Party Assets:\n\n' : '';
+    i = 1;
+    while (answers[`credit3rdPartyAsset${i}`] !== undefined) {
+      content += answers[`credit3rdPartyAsset${i}`] ? `  * ${answers[`credit3rdPartyAsset${i}`]}\n\n` : '';
+      i++;
+    }
+
+    content += answers.credit3rdPartyAsset1 ? '#### Tutorials Followed:\n\n': '';
+    i = 1;
+    while (answers[`creditTutorial${i}`] !== undefined) {
+      content += answers[`creditTutorial${i}`] ? `  * ${answers[`creditTutorial${i}`]}\n\n` : '';
+      i++;
+    }
+  }
 
   //Build the LICENSE section
   if (answers.licenseConfirm) {
