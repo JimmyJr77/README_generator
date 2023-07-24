@@ -1,25 +1,20 @@
-# test
+# README Project
 
-undefined
+![red badge](https://img.shields.io/badge/sample-red_badge-red)  ![blue badge](https://img.shields.io/badge/sample-blue_badge-blue)  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 You can find a video of this README build [here](http://www.) 
 
 ## Table of Contents
-  * [Tests](#tests)
+  * [License](#license)
+  * [Badges](#badges)
 
-undefined
+## License
+MIT License
 
-## Tests
-  * yimmy77
+## Badges
+  * [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-  * yimmy77
+  * ![red badge](https://img.shields.io/badge/sample-red_badge-red)
 
-  * yimmy77
-
-## Questions 
-If you have any questions about the content, instructions, or how to get involved in this project, please contact: 
-
-  * yimmy77    
-    GitHub Username: [yimmy77](https://github.com/yimmy77/)    
-    Email Address: yimmy77    
+  * ![blue badge](https://img.shields.io/badge/sample-blue_badge-blue)
 

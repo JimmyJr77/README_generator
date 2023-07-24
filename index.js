@@ -400,37 +400,37 @@ const badgesQuestions = [
   },
   {
     type: 'input',
-    message: "If you have badges, use the following format: ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)",
+    message: "If you have badges, use the following format: ![ALT_TEXT](https://img.shields.io/YOUR_BADGE_DETAILS)",
     name: 'badge1',
     when: (answers) => answers.badgesConfirm,
   },
   {
     type: 'input',
-    message: "If you have badges, use the following format: ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)",
+    message: "If you have badges, use the following format: ![ALT_TEXT](https://img.shields.io/YOUR_BADGE_DETAILS)",
     name: 'badge2',
     when: (answers) => answers.badge1,
   },
   {
     type: 'input',
-    message: "If you have badges, use the following format: ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)",
+    message: "If you have badges, use the following format: ![ALT_TEXT](https://img.shields.io/YOUR_BADGE_DETAILS)",
     name: 'badge3',
     when: (answers) => answers.badge2,
   },
   {
     type: 'input',
-    message: "If you have badges, use the following format: ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)",
+    message: "If you have badges, use the following format: ![ALT_TEXT](https://img.shields.io/YOUR_BADGE_DETAILS)",
     name: 'badge4',
     when: (answers) => answers.badge3,
   },
   {
     type: 'input',
-    message: "If you have badges, use the following format: ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)",
+    message: "If you have badges, use the following format: ![ALT_TEXT](https://img.shields.io/YOUR_BADGE_DETAILS)",
     name: 'badge5',
     when: (answers) => answers.badge4,
   },
   {
     type: 'input',
-    message: "If you have badges, use the following format: ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)",
+    message: "If you have badges, use the following format: ![ALT_TEXT](https://img.shields.io/YOUR_BADGE_DETAILS)",
     name: 'badge6',
     when: (answers) => answers.badge5,
   }
@@ -586,8 +586,15 @@ function generateReadmeContent(answers) {
     'Eclipse Public License 2.0': '[![License: EPL 2.0](https://img.shields.io/badge/License-EPL%202.0-red.svg)](https://www.eclipse.org/legal/epl-2.0/)',
     'Creative Commons Zero v1.0 Universal': '[![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-blue.svg)](https://creativecommons.org/publicdomain/zero/1.0/)',
   };
-
-  content += answers.license === 'None of the above' ? 'No license badge identified. See [License](#license) section for more details.\n\n' : licenseBadges[answers.license] + '\n\n';
+  // Add additional badging and notes to the top of the README
+  if (answers.badgesConfirm) {
+    i=1
+    while (answers[`badge${i}`] !== undefined && answers[`badge${i}`] !== '') {
+      content += `${answers[`badge${i}`]}  `;
+      i++;
+    }
+  }
+  content += answers.license === 'None of the above' || answers.licenseConfirm == false ? '\n\n No license badge identified. See [License](#license) section for more details.\n\n' : licenseBadges[answers.license] + '\n\n';
   content += 'You can find a video of this README build [here](http://www.) \n\n'
 
   // Build the DESCRIPTION section
@@ -702,6 +709,10 @@ function generateReadmeContent(answers) {
 
   //Build the BADGES section
   content += answers.badgesConfirm ? '## Badges\n' : '';
+  if (answers.licenseConfirm && answers.license !== 'None of the above') {
+    content += `  * ${licenseBadges[answers.license]}\n\n`;
+  }
+
   i=1
   while (answers[`badge${i}`] !== undefined && answers[`badge${i}`] !== '') {
     content += `  * ${answers[`badge${i}`]}\n\n`;
@@ -740,8 +751,6 @@ function generateReadmeContent(answers) {
     }
     content += '\n';
   }
-  
-
 
   return content;
 }
