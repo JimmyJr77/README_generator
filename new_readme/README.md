@@ -1,106 +1,25 @@
-# jimmyjr77
+# test
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+undefined
 
-You can find a video of this README build [here](http://www.)## Description
-#### Motivation:
-jimmyjr77jimmyjr77
-
-#### Why Build:
-jimmyjr77
-
-#### Problem Solved:
-jimmyjr77
-
-#### What Was Learned:
-jimmyjr77jimmyjr77jimmyjr77
+You can find a video of this README build [here](http://www.) 
 
 ## Table of Contents
-  * [Installation](#installation)
-  * [Usage](#usage)
-  * [Credits](#credits)
-  * [License](#license)
-  * [Badges](#badges)
-  * [Features](#features)
   * [Tests](#tests)
 
-## Installation Instructions
-#### Step 1:
-jimmyjr77
-
-#### Step 2:
-jimmyjr77
-
-#### Step 3:
-jimmyjr77
-
-## Usage
-#### Example 1:
-jimmyjr77
-
-jimmyjr77
-
-#### Example 2:
-jimmyjr77
-
-jimmyjr77
-
-#### Example 3:
-jimmyjr77
-
-## Credits
-#### Individual Credits:
-  * jimmyjr77    
-    GitHub Username: [jimmyjr77](https://github.com/jimmyjr77/)    
-    Email Address: jimmyjr77    
-
-
-  * jimmyjr77    
-    GitHub Username: [jimmyjr77](https://github.com/jimmyjr77/)    
-    Email Address: jimmyjr77    
-
-
-  * jimmyjr77    
-    GitHub Username: [jimmyjr77](https://github.com/jimmyjr77/)    
-
-
-#### Third-Party Assets:
-
-  * jimmyjr77
-
-  * jimmyjr77
-
-  * jimmyjr77
-
-#### Tutorials Followed:
-
-  * jimmyjr77
-
-  * jimmyjr77
-
-  * jimmyjr77
-
-## License
-MIT License
-
-## Badges
-  * jimmyjr77
-
-  * jimmyjr77
-
-  * jimmyjr77
-
-## Features
-  * jimmyjr77
-
-  * jimmyjr77
-
-  * jimmyjr77
+undefined
 
 ## Tests
-  * jimmyjr77
+  * yimmy77
 
-  * jimmyjr77
+  * yimmy77
 
-  * jimmyjr77
+  * yimmy77
+
+## Questions 
+If you have any questions about the content, instructions, or how to get involved in this project, please contact: 
+
+  * yimmy77    
+    GitHub Username: [yimmy77](https://github.com/yimmy77/)    
+    Email Address: yimmy77    
 

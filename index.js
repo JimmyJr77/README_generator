@@ -541,6 +541,34 @@ const testsQuestions = [
   },
 ];
 
+const myContactQuestions = [
+  {
+    type: 'confirm',
+    message: 'Do you want to add your contact information for the section: "Questions"?',
+    name: 'myContactConfirm',
+    default: false,
+  },
+  {
+    type: 'input',
+    message: 'Enter your name or leave blank to skip',
+    name: 'myProfile',
+    when: (answers) => answers.myContactConfirm,
+  },
+  {
+    type: 'input',
+    message: "What is this collaborator's GitHub username?",
+    name: 'myProfileGitUsername',
+    when: (answers) => answers.myContactConfirm,
+  },
+  {
+    type: 'input',
+    message: "What is this collaborator's email address?",
+    name: 'myProfileEmail',
+    when: (answers) => answers.myContactConfirm,
+  },
+];
+
+
 // TODO: Create a function to generate README file content based on user answers
 function generateReadmeContent(answers) {
   let content = '# ' + answers.projectTitle + '\n\n';
@@ -596,6 +624,9 @@ function generateReadmeContent(answers) {
   }
   if (answers.testsConfirm) {
     tableOfContents.push('  * [Tests](#tests)');
+  }
+  if (answers.myContact) {
+    tableOfContents.push('   * [Questions](#questions');
   }
   content += '## Table of Contents\n' + tableOfContents.join('\n') + '\n\n';
 
@@ -696,6 +727,22 @@ function generateReadmeContent(answers) {
     i++;
   }
 
+  //Build the QUESTIONS section
+  if (answers.myContactConfirm) {
+    content += '## Questions \n'
+    content += 'If you have any questions about the content, instructions, or how to get involved in this project, please contact: \n\n'
+    content += answers['myProfile'] ? '  * ' + answers['myProfile'] + '    \n' : '';
+    if (answers['myProfileGitUsername'] !== '' && answers['myProfileGitUsername'] !== undefined) {
+      content += '    GitHub Username: [' + answers['myProfileGitUsername'] + '](https://github.com/' + answers['myProfileGitUsername'] + '/)    \n';
+    }
+    if (answers['myProfileEmail'] !== undefined && answers['myProfileEmail'] !== '') {
+      content += '    Email Address: ' + answers['myProfileEmail'] + '    \n';
+    }
+    content += '\n';
+  }
+  
+
+
   return content;
 }
 
@@ -756,24 +803,31 @@ inquirer.prompt(descriptionQuestions).then((descriptionAnswers) => {
                   console.log('Tests Answers:');
                   console.log(testsAnswers);
 
-                  // Combine all section answers into one object
-                  const allAnswers = {
-                    ...descriptionAnswers,
-                    ...installationAnswers,
-                    ...usageAnswers,
-                    ...creditsAnswers,
-                    ...licenseAnswers,
-                    ...badgesAnswers,
-                    ...featuresAnswers,
-                    ...contributeAnswers,
-                    ...testsAnswers,
-                  };
+                  // Prompt for Questions section questions
+                  inquirer.prompt(myContactQuestions).then((myContactAnswers) => {
+                    console.log('myContact Answers:');
+                    console.log(myContactAnswers);
 
-                  // Generate the README file content using all answers
-                  const readmeContent = generateReadmeContent(allAnswers);
+                    // Combine all section answers into one object
+                    const allAnswers = {
+                      ...descriptionAnswers,
+                      ...installationAnswers,
+                      ...usageAnswers,
+                      ...creditsAnswers,
+                      ...licenseAnswers,
+                      ...badgesAnswers,
+                      ...featuresAnswers,
+                      ...contributeAnswers,
+                      ...testsAnswers,
+                      ...myContactAnswers,
+                    };
 
-                  // Write the README file
-                  writeToFile('./new_readme/README.md', readmeContent);
+                    // Generate the README file content using all answers
+                    const readmeContent = generateReadmeContent(allAnswers);
+
+                    // Write the README file
+                    writeToFile('./new_readme/README.md', readmeContent);
+                  }); 
                 });
               });
             });
