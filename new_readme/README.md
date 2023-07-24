@@ -1,17 +1,19 @@
-# y
+# jimmyjr77
 
-## Description
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+You can find a video of this README build [here](http://www.)## Description
 #### Motivation:
-y
+jimmyjr77jimmyjr77
 
 #### Why Build:
-y
+jimmyjr77
 
 #### Problem Solved:
-y
+jimmyjr77
 
 #### What Was Learned:
-y
+jimmyjr77jimmyjr77jimmyjr77
 
 ## Table of Contents
   * [Installation](#installation)
@@ -20,134 +22,85 @@ y
   * [License](#license)
   * [Badges](#badges)
   * [Features](#features)
-  * [How to Contribute](#how-to-contribute)
   * [Tests](#tests)
 
 ## Installation Instructions
 #### Step 1:
-y
+jimmyjr77
 
 #### Step 2:
-y
+jimmyjr77
 
 #### Step 3:
-y
-
-#### Step 4:
-y
-
-#### Step 5:
-y
-
-#### Step 6:
-y
+jimmyjr77
 
 ## Usage
 #### Example 1:
-y
+jimmyjr77
 
-y
+jimmyjr77
 
 #### Example 2:
-y
+jimmyjr77
 
-y
+jimmyjr77
 
 #### Example 3:
-yy
-
-y
-
-#### Example 4:
-y
-
-y
-
-#### Example 5:
-y
-
-y
-
-#### Example 6:
-y
-
-y
+jimmyjr77
 
 ## Credits
 #### Individual Credits:
+  * jimmyjr77    
+    GitHub Username: [jimmyjr77](https://github.com/jimmyjr77/)    
+    Email Address: jimmyjr77    
 
-  * y
 
-  * y
+  * jimmyjr77    
+    GitHub Username: [jimmyjr77](https://github.com/jimmyjr77/)    
+    Email Address: jimmyjr77    
 
-  * y
 
-  * y
+  * jimmyjr77    
+    GitHub Username: [jimmyjr77](https://github.com/jimmyjr77/)    
 
-  * y
-
-  * y
 
 #### Third-Party Assets:
 
-  * y
+  * jimmyjr77
 
-  * y
+  * jimmyjr77
 
-  * y
-
-  * y
-
-  * y
-
-  * y
+  * jimmyjr77
 
 #### Tutorials Followed:
 
-  * y
+  * jimmyjr77
 
-  * y
+  * jimmyjr77
 
-  * y
-
-  * y
-
-  * y
-
-  * y
+  * jimmyjr77
 
 ## License
-yy
+MIT License
 
 ## Badges
-  * y
+  * jimmyjr77
 
-  * y
+  * jimmyjr77
 
-  * y
-
-  * y
-
-  * y
-
-  * y
+  * jimmyjr77
 
 ## Features
-  * y
+  * jimmyjr77
 
-  * y
+  * jimmyjr77
 
-  * y
-
-  * y
-
-  * y
-
-  * y
-
-## How to Contribute
-y
+  * jimmyjr77
 
 ## Tests
-undefined
+  * jimmyjr77
+
+  * jimmyjr77
+
+  * jimmyjr77
 

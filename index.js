@@ -177,15 +177,39 @@ const creditsQuestions = [
   },
   {
     type: 'input',
-    message: 'List your collaborators with links to their GitHub profiles or leave blank if none.',
+    message: 'Name a collaborator on your project or leave blank to skip.',
     name: 'creditProfile1',
     when: (answers) => answers.creditsConfirm,
   },
   {
     type: 'input',
-    message: 'List your collaborators with links to their GitHub profiles.',
+    message: "What is this collaborator's GitHub username?",
+    name: 'creditProfile1GitUsername',
+    when: (answers) => answers.creditProfile1,
+  },
+  {
+    type: 'input',
+    message: "What is this collaborator's email address?",
+    name: 'creditProfile1Email',
+    when: (answers) => answers.creditProfile1,
+  },
+  {
+    type: 'input',
+    message: 'Name another collaborator on your project or leave blank to skip',
     name: 'creditProfile2',
     when: (answers) => answers.creditProfile1,
+  },
+  {
+    type: 'input',
+    message: "What is this collaborator's GitHub username?",
+    name: 'creditProfile2GitUsername',
+    when: (answers) => answers.creditProfile2,
+  },
+  {
+    type: 'input',
+    message: "What is this collaborator's email address?",
+    name: 'creditProfile2Email',
+    when: (answers) => answers.creditProfile2,
   },
   {
     type: 'input',
@@ -195,9 +219,33 @@ const creditsQuestions = [
   },
   {
     type: 'input',
+    message: "What is this collaborator's GitHub username?",
+    name: 'creditProfile3GitUsername',
+    when: (answers) => answers.creditProfile3,
+  },
+  {
+    type: 'input',
+    message: "What is this collaborator's email address?",
+    name: 'creditProfile3Email',
+    when: (answers) => answers.creditProfile3,
+  },
+  {
+    type: 'input',
     message: 'List your collaborators with links to their GitHub profiles.',
     name: 'creditProfile4',
     when: (answers) => answers.creditProfile3,
+  },
+  {
+    type: 'input',
+    message: "What is this collaborator's GitHub username?",
+    name: 'creditProfile4GitUsername',
+    when: (answers) => answers.creditProfile4,
+  },
+  {
+    type: 'input',
+    message: "What is this collaborator's email address?",
+    name: 'creditProfile4Email',
+    when: (answers) => answers.creditProfile4,
   },
   {
     type: 'input',
@@ -207,9 +255,33 @@ const creditsQuestions = [
   },
   {
     type: 'input',
+    message: "What is this collaborator's GitHub username?",
+    name: 'creditProfile5GitUsername',
+    when: (answers) => answers.creditProfile5,
+  },
+  {
+    type: 'input',
+    message: "What is this collaborator's email address?",
+    name: 'creditProfile5Email',
+    when: (answers) => answers.creditProfile5,
+  },
+  {
+    type: 'input',
     message: 'List your collaborators with links to their GitHub profiles.',
     name: 'creditProfile6',
     when: (answers) => answers.creditProfile5,
+  },
+  {
+    type: 'input',
+    message: "What is this collaborator's GitHub username?",
+    name: 'creditProfile6GitUsername',
+    when: (answers) => answers.creditProfile6,
+  },
+  {
+    type: 'input',
+    message: "What is this collaborator's email address?",
+    name: 'creditProfile6Email',
+    when: (answers) => answers.creditProfile6,
   },
   {
     type: 'input',
@@ -293,11 +365,30 @@ const licenseQuestions = [
     default: false,
   },
   {
-    type: 'input',
-    message: 'Insert license details here (Refer to https://choosealicense.com/ for more).',
+    type: 'list',
+    message: 'Choose a license for your application:',
     name: 'license',
+    choices: [
+      'MIT License',
+      'GNU GPLv3',
+      'Apache License 2.0',
+      'BSD 3-Clause License',
+      'ISC License',
+      'Mozilla Public License 2.0',
+      'GNU AGPLv3',
+      'GNU LGPLv3',
+      'Eclipse Public License 2.0',
+      'Creative Commons Zero v1.0 Universal',
+      'None of the above'
+    ],
     when: (answers) => answers.licenseConfirm,
-  }
+  },
+  {
+    type: 'input',
+    message: 'What license would you like to add?',
+    name: 'licenseAlt',
+    when: (answers)  => answers.license === 'None of the above',
+  },
 ];
 
 const badgesQuestions = [
@@ -454,6 +545,23 @@ const testsQuestions = [
 function generateReadmeContent(answers) {
   let content = '# ' + answers.projectTitle + '\n\n';
 
+  // Map to potential badging options
+  const licenseBadges = {
+    'MIT License': '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)',
+    'GNU GPLv3': '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)',
+    'Apache License 2.0': '[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)',
+    'BSD 3-Clause License': '[![License: BSD 3-Clause](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)',
+    'ISC License': '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)',
+    'Mozilla Public License 2.0': '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)',
+    'GNU AGPLv3': '[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)',
+    'GNU LGPLv3': '[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)',
+    'Eclipse Public License 2.0': '[![License: EPL 2.0](https://img.shields.io/badge/License-EPL%202.0-red.svg)](https://www.eclipse.org/legal/epl-2.0/)',
+    'Creative Commons Zero v1.0 Universal': '[![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-blue.svg)](https://creativecommons.org/publicdomain/zero/1.0/)',
+  };
+
+  content += answers.license === 'None of the above' ? 'No license badge identified. See [License](#license) section for more details.\n\n' : licenseBadges[answers.license] + '\n\n';
+  content += 'You can find a video of this README build [here](http://www.) \n\n'
+
   // Build the DESCRIPTION section
   if (answers.descriptionConfirm) {
     content += '## Description\n';
@@ -518,62 +626,74 @@ function generateReadmeContent(answers) {
     }
   }
 
+
   // Build the CREDITS Section
-  // Build Credit Profile Section
   if (answers.creditsConfirm) {
     content += '## Credits\n';
-    content += answers.creditProfile1 ? '#### Individual Credits:\n\n' : '';
-    let i = 1;
-    while (answers[`creditProfile${i}`] !== undefined) {
-      content += `  * ${answers[`creditProfile${i}`]}\n\n`;
-      i++;
+    content += answers.creditProfile1 ? '#### Individual Credits:\n' : '';
+    // Build Credit Profile Section
+    for (let i = 1; i <= 6; i++) {
+      if (answers['creditProfile' + i] && answers['creditProfile' + i] !== '') {
+        content += '  * ' + answers['creditProfile' + i] + '    \n';
+        if (answers['creditProfile' + i + 'GitUsername'] !== '' && answers['creditProfile' + i + 'GitUsername'] !== undefined) {
+          content += '    GitHub Username: [' + answers['creditProfile' + i + 'GitUsername'] + '](https://github.com/' + answers['creditProfile' + i + 'GitUsername'] + '/)    \n';
+        }
+        if (answers['creditProfile' + i + 'Email'] !== undefined && answers['creditProfile' + i + 'Email'] !== '') {
+          content += '    Email Address: ' + answers['creditProfile' + i + 'Email'] + '    \n';
+        }
+        content += '\n\n';
+      }
     }
 
     // Build Credit 3rd Party Asset Section
     content += answers.credit3rdPartyAsset1 ? '#### Third-Party Assets:\n\n' : '';
     i = 1;
-    while (answers[`credit3rdPartyAsset${i}`] !== undefined) {
+    while (answers[`credit3rdPartyAsset${i}`] !== undefined && answers[`credit3rdPartyAsset${i}`] !== '') {
       content += `  * ${answers[`credit3rdPartyAsset${i}`]}\n\n`;
       i++;
     }
 
-    // Build Credit Tutorials Secion
-    content += answers.credit3rdPartyAsset1 ? '#### Tutorials Followed:\n\n': '';
+    // Build Credit Tutorials Section
+    content += answers.creditTutorial1 ? '#### Tutorials Followed:\n\n' : '';
     i = 1;
-    while (answers[`creditTutorial${i}`] !== undefined) {
+    while (answers[`creditTutorial${i}`] !== undefined && answers[`creditTutorial${i}`] !== '') {
       content += `  * ${answers[`creditTutorial${i}`]}\n\n`;
       i++;
     }
   }
 
-  //Build the LICENSE section
-  content += answers.licenseConfirm ? '## License\n' + answers.license + '\n\n': '';
+
+  // Build the LICENSE section
+  content += answers.licenseConfirm ? '## License\n' : '';
+  content += answers.license !== 'None of the above' ? answers.license + '\n\n' : '';
+  content += answers.license === 'None of the above' ? answers.licenseAlt + '\n\n' : '';
+
 
   //Build the BADGES section
   content += answers.badgesConfirm ? '## Badges\n' : '';
   i=1
-  while (answers[`badge${i}`] !== undefined) {
+  while (answers[`badge${i}`] !== undefined && answers[`badge${i}`] !== '') {
     content += `  * ${answers[`badge${i}`]}\n\n`;
     i++;
   }
 
   //Build the FEATURES section
   content += answers.featuresConfirm ? '## Features\n': '';
-  i=1
-  while (answers[`feature${i}`] !== undefined) {
-    content += `  * ${answers[`feature${i}`]}\n\n`
-    i++
+  i=1;
+  while (answers[`feature${i}`] !== undefined && answers[`feature${i}`] !== '') {
+    content += `  * ${answers[`feature${i}`]}\n\n`;
+    i++;
   }
 
   //Build the HOW TO CONTRIBUTE section
   content += answers.contributeConfirm ? '## How to Contribute\n' + answers.contribute + '\n\n' : '';
 
   //Build the TESTS section
-  content += answers.testsConfirm ? '## Tests\n';
-  i=1
-  while (answers[`test${i}`] !== undefined) {
+  content += answers.testsConfirm ? '## Tests\n' : '';
+  i=1;
+  while (answers[`test${i}`] !== undefined && answers[`test${i}`] !== '') {
     content += `  * ${answers[`test${i}`]}\n\n`;
-    i++
+    i++;
   }
 
   return content;
@@ -713,15 +833,41 @@ inquirer.prompt(descriptionQuestions).then((descriptionAnswers) => {
   //   content += answers.usageEx6Image !== '' && answers.usageEx6Image !== undefined ? answers.usageEx6Image + '\n\n' : '';
   // }
 
-// Build the CREDITS section
+  // // Build the CREDITS Section
   // if (answers.creditsConfirm) {
   //   content += '## Credits\n';
-  //   content += answers.creditProfile1 ? '#### Individual Credits:\n' + '  * ' + answers.creditProfile1+ '\n\n' : '';
-  //   content += answers.creditProfile2 ? '  * ' + answers.creditProfile2 + '\n\n' : '';
-  //   content += answers.creditProfile3 ? '  * ' + answers.creditProfile3 + '\n\n' : '';
-  //   content += answers.creditProfile4 ? '  * ' + answers.creditProfile4 + '\n\n' : '';
-  //   content += answers.creditProfile5 ? '  * ' + answers.creditProfile5 + '\n\n' : '';
-  //   content += answers.creditProfile6 ? '  * ' + answers.creditProfile6 + '\n\n' : '';
+  //   // Build Credit Profile Section
+  //   content += answers.creditProfile1 ? '#### Individual Credits:\n' : '';
+  //   content += answers.creditProfile1 !== undefined && answers.creditProfile1 !== '' ? '  * ' + answers.creditProfile1 + '\n\n' : '';
+  //   content += answers.creditProfile1GitUsername !== undefined && answers.creditProfile1GitUsername !== '' ? '    GitHub Username: [' + answers.creditProfile1GitUsername + '](https://github.com/' + answers.creditProfile1GitUsername + '/)\n\n' : '';
+  //   content += answers.creditProfile1Email !== undefined && answers.creditProfile1Email !== '' ? '    Email Address: ' + answers.creditProfile1Email + '\n': '';
+  //   content += '\n\n';
+
+  //   content += answers.creditProfile2 !== undefined && answers.creditProfile2 !== '' ? '  * ' + answers.creditProfile2 + '\n\n' : '';
+  //   content += answers.creditProfile2GitUsername !== undefined && answers.creditProfile2GitUsername !== '' ? '    GitHub Username: [' + answers.creditProfile2GitUsername + '](https://github.com/' + answers.creditProfile1GitUsername + '/)\n\n' : '';
+  //   content += answers.creditProfile2Email !== undefined && answers.creditProfile2Email !== '' ? '    Email Address: ' + answers.creditProfile2Email + '\n': '';
+  //   content += '\n\n';
+
+  //   content += answers.creditProfile3 !== undefined && answers.creditProfile3 !== '' ? '  * ' + answers.creditProfile3 + '\n\n' : '';
+  //   content += answers.creditProfile3GitUsername !== undefined && answers.creditProfile3GitUsername !== '' ? '    GitHub Username: [' + answers.creditProfile3GitUsername + '](https://github.com/' + answers.creditProfile3GitUsername + '/)\n\n' : '';
+  //   content += answers.creditProfile3Email !== undefined && answers.creditProfile3Email !== '' ? '    Email Address: ' + answers.creditProfile3Email + '\n': '';
+  //   content += '\n\n';
+
+  //   content += answers.creditProfile4 !== undefined && answers.creditProfile4 !== '' ? '  * ' + answers.creditProfile4 + '\n\n' : '';
+  //   content += answers.creditProfile4GitUsername !== undefined && answers.creditProfile4GitUsername !== '' ? '    GitHub Username: [' + answers.creditProfile4GitUsername + '](https://github.com/' + answers.creditProfile4GitUsername + '/)\n\n' : '';
+  //   content += answers.creditProfile4Email !== undefined && answers.creditProfile4Email !== ''  ? '    Email Address: ' + answers.creditProfile4Email + '\n': '';
+  //   content += '\n\n';
+
+  //   content += answers.creditProfile5 !== undefined && answers.creditProfile5 !== '' ? '  * ' + answers.creditProfile5 + '\n\n' : '';
+  //   content += answers.creditProfile5GitUsername !== undefined && answers.creditProfile5GitUsername !== '' ? '    GitHub Username: [' + answers.creditProfile5GitUsername + '](https://github.com/' + answers.creditProfile5GitUsername + '/)\n\n' : '';
+  //   content += answers.creditProfile5Email !== undefined && answers.creditProfile5Email !== '' ? '    Email Address: ' + answers.creditProfile5Email + '\n': '';
+  //   content += '\n\n';
+
+  //   content += answers.creditProfile6 !== undefined && answers.creditProfile6 !== '' ? '  * ' + answers.creditProfile6 + '\n\n' : '';
+  //   content += answers.creditProfile6GitUsername !== undefined && answers.creditProfile6GitUsername !== '' ? '    GitHub Username: [' + answers.creditProfile6GitUsername + '](https://github.com/' + answers.creditProfile6GitUsername + '/)\n\n' : '';
+  //   content += answers.creditProfile6Email !== undefined && answers.creditProfile6Email !== ''  ? '    Email Address: ' + answers.creditProfile6Email + '\n': '';  
+  //   content += '\n\n';
+
   //   content += answers.credit3rdPartyAsset1 ? '#### Third-Party Assets:\n' + '  * ' + answers.credit3rdPartyAsset1 + '\n\n' : '';
   //   content += answers.credit3rdPartyAsset2 ? '  * ' + answers.credit3rdPartyAsset2 + '\n\n' : '';
   //   content += answers.credit3rdPartyAsset3 ? '  * ' + answers.credit3rdPartyAsset3 + '\n\n' : '';
@@ -735,3 +881,12 @@ inquirer.prompt(descriptionQuestions).then((descriptionAnswers) => {
   //   content += answers.creditTutorial5 ? '  * ' + answers.creditTutorial5 + '\n\n' : '';
   //   content += answers.creditTutorial6 ? '  * ' + answers.creditTutorial6 + '\n\n' : '';
   // }
+
+  // if (answers.creditsConfirm) {
+  //   content += '## Credits\n';
+  //   content += answers.creditProfile1 ? '#### Individual Credits:\n\n' : '';
+  //   let i = 1;
+  //   while (answers[`creditProfile${i}`] !== undefined && answers[`creditProfile${i}`] !== '') {
+  //     content += `  * ${answers[`creditProfile${i}`]}\n\n`;
+  //     i++;
+  //   }
