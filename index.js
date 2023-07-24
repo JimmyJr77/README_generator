@@ -450,27 +450,6 @@ const testsQuestions = [
   },
 ];
 
-// // Recursive function to ask a question repeatedly until a blank response -- UNUSED CONCEPT
-// function askUntilBlank(question, fieldName, answers) {
-//   return inquirer
-//     .prompt([
-//       {
-//         type: 'input',
-//         message: question,
-//         name: fieldName,
-//       },
-//     ])
-//     .then((response) => {
-//       const fieldValue = response[fieldName].trim();
-//       if (fieldValue !== '') {
-//         // Append the response to the respective field in answers
-//         answers[fieldName] += '\n' + fieldValue;
-//         return askUntilBlank(question, fieldName, answers);
-//       }
-//       return answers;
-//     });
-// }
-
 // TODO: Create a function to generate README file content based on user answers
 function generateReadmeContent(answers) {
   let content = '# ' + answers.projectTitle + '\n\n';
@@ -546,7 +525,7 @@ function generateReadmeContent(answers) {
     content += answers.creditProfile1 ? '#### Individual Credits:\n\n' : '';
     let i = 1;
     while (answers[`creditProfile${i}`] !== undefined) {
-      content += answers[`creditProfile${i}`] ? `  * ${answers[`creditProfile${i}`]}\n\n` : '';
+      content += `  * ${answers[`creditProfile${i}`]}\n\n`;
       i++;
     }
 
@@ -554,7 +533,7 @@ function generateReadmeContent(answers) {
     content += answers.credit3rdPartyAsset1 ? '#### Third-Party Assets:\n\n' : '';
     i = 1;
     while (answers[`credit3rdPartyAsset${i}`] !== undefined) {
-      content += answers[`credit3rdPartyAsset${i}`] ? `  * ${answers[`credit3rdPartyAsset${i}`]}\n\n` : '';
+      content += `  * ${answers[`credit3rdPartyAsset${i}`]}\n\n`;
       i++;
     }
 
@@ -562,7 +541,7 @@ function generateReadmeContent(answers) {
     content += answers.credit3rdPartyAsset1 ? '#### Tutorials Followed:\n\n': '';
     i = 1;
     while (answers[`creditTutorial${i}`] !== undefined) {
-      content += answers[`creditTutorial${i}`] ? `  * ${answers[`creditTutorial${i}`]}\n\n` : '';
+      content += `  * ${answers[`creditTutorial${i}`]}\n\n`;
       i++;
     }
   }
@@ -574,23 +553,27 @@ function generateReadmeContent(answers) {
   content += answers.badgesConfirm ? '## Badges\n' : '';
   i=1
   while (answers[`badge${i}`] !== undefined) {
-    content += answers[`badge${i}`] ? `  * ${answers[`badge${i}`]}\n\n` : '';
+    content += `  * ${answers[`badge${i}`]}\n\n`;
     i++;
   }
 
   //Build the FEATURES section
-  if (answers.featuresConfirm) {
-    content += '## Features\n' + answers.features + '\n\n';
+  content += answers.featuresConfirm ? '## Features\n': '';
+  i=1
+  while (answers[`feature${i}`] !== undefined) {
+    content += `  * ${answers[`feature${i}`]}\n\n`
+    i++
   }
 
   //Build the HOW TO CONTRIBUTE section
-  if (answers.contributeConfirm) {
-    content += '## How to Contribute\n' + answers.contribute + '\n\n';
-  }
+  content += answers.contributeConfirm ? '## How to Contribute\n' + answers.contribute + '\n\n' : '';
 
   //Build the TESTS section
-  if (answers.testsConfirm) {
-    content += '## Tests\n' + answers.tests + '\n\n';
+  content += answers.testsConfirm ? '## Tests\n';
+  i=1
+  while (answers[`test${i}`] !== undefined) {
+    content += `  * ${answers[`test${i}`]}\n\n`;
+    i++
   }
 
   return content;
@@ -681,6 +664,26 @@ inquirer.prompt(descriptionQuestions).then((descriptionAnswers) => {
   });
 });
 
+// // Recursive function to ask a question repeatedly until a blank response -- UNUSED CONCEPT
+// function askUntilBlank(question, fieldName, answers) {
+//   return inquirer
+//     .prompt([
+//       {
+//         type: 'input',
+//         message: question,
+//         name: fieldName,
+//       },
+//     ])
+//     .then((response) => {
+//       const fieldValue = response[fieldName].trim();
+//       if (fieldValue !== '') {
+//         // Append the response to the respective field in answers
+//         answers[fieldName] += '\n' + fieldValue;
+//         return askUntilBlank(question, fieldName, answers);
+//       }
+//       return answers;
+//     });
+// }
 
 // Build the INSTALLATION section
   // if (answers.installationConfirm) {
